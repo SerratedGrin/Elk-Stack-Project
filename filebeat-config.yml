@@ -1,3 +1,5 @@
+##### THIS CONFIG PLAYBOOK SHOULD BE SAVED IN '/etc/ansible/files/' TO BE RUN WITH THE INSTALLATION PLAYBOOK #####
+
 ######################## Filebeat Configuration ############################
 # This file is a full configuration example documenting all non-deprecated
 # options in comments. For a shorter configuration example, that contains only
