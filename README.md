@@ -87,23 +87,23 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+<img src="https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/Docker%20PS%20Elk.png" />
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+This ELK server is configured to monitor the Red-Team-Web virtual machines hosting the DVWA, #1 and #2.
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Filebeat.
+- Metricbeat.
+- Packbeat.
 
-These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+The funtions of Filebeat and Metricbeat were covered at the beginning of this readme. Packbeat collects packets that pass through the network card, generating a trace of the network activity and forwarding this data to the ELK stack for analysis.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the [filebeat-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml) file to the proper directory specified inside said YAML file.
+- Copy the [filebeat-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml) to the proper directory specified inside said YAML file. This will involve making a directory called 'files' inside the Ansible directory in order to use this specific configuration.
 - Update the hosts file within the Ansible directory file to include the webservers (Red Team VMs) and the ELK server. Referenced in [this screenshot]()
 - Run the playbook, and navigate to to check that the installation worked as expected.
 
