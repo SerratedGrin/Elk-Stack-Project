@@ -21,7 +21,7 @@ This document contains the following details:
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the Damn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, scalable, and reliable - in addition to restricting unsecured access to the network.
 
@@ -66,12 +66,12 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because the process eliminates potential human error and makes the process significantly more efficient - particularly while utilizing a bash script to establish multiple configurations with one command. There are, however, specific elements that will need to be modified to accurately configure according to the parameters of the topology (virtual networks and their respective IP addresses and/or subnets, as was modified in this particular case for the filebeat-config.yml).
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because the process eliminates potential human error and makes the process significantly more efficient - particularly while utilizing a bash script to establish multiple configurations with one command. There are, however, specific elements that will need to be modified to accurately configure according to the parameters of the topology (virtual networks and their respective IP addresses and/or subnets, as was modified in this particular case for the [filebeat-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml) ).
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Installs necessary files for ELK to run as intended.
+- Configures the hosting server and the ELK apps themselves.
+- Lauches the Docker container in which the ELK Stack has been configured.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -91,9 +91,9 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the [filebeat-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml) file to the proper directory specified inside said YAML file.
+- Update the hosts file within the Ansible directory file to include the webservers (Red Team VMs) and the ELK server. Referenced in [this screenshot]()
+- Run the playbook, and navigate to to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
