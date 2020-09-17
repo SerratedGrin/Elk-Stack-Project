@@ -23,17 +23,21 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the Damn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly available, scalable, and reliable - in addition to restricting unsecured access to the network.
-
 First and foremost - the load balancer's off-loading function, or distribution of traffic across multiple servers, mitigates Denial of Service attacks. This highly valuable security measure alone highlights the benefit of a load balancer.
 
-Load balancers also offer a health probe function, obtaining reports of servers with issues and stops sending traffic to said servers. 
+Load balancing ensures that the application will be highly available, scalable, and reliable - in addition to restricting unsecured access to the network. Load balancers also offer a health probe function, obtaining reports of servers with issues and stops sending traffic to said servers. 
 
-Note that Filebeat is a separate entity within the diagram, but it is a running service on the DVWA host machines - gathering log data to export to the ELK application (specifically, to ElasticSearch and/or Logstash).
+The virtual network and allocated security group the DVWA machines have been configured within ensures the filtering of network traffic via security rules, such as which ports are allowed access. This is true for the virtual network and allocated security group for the ELK server as well. 
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+  - Note that the networks are peering - this allows both networks to seemlessly connect with each other, and simplifies configurations of the resource group containing the entire infrastructure.
+
+Filebeat collects data about the file system, ones that you can specify as may be necessary with a larger organization, and forwards them to Elasticsearch and/or Logstash for indexing.
+
+Metricbeat (an accompanying service to Filebeat) collects server metrics - such as uptime, hardware utilization, peak response time, etc. This is particularly important tool for monitoring services such as Apache2 or MySQL. This data is also forwarded to Elasticsearch and/or Logstash.
+
+ - Note that Filebeat is a separate entity within the diagram, but it is a running service on the DVWA host machines. 
+
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems and system metrics. More detail about the ELK configuration [below](https://github.com/SerratedGrin/Elk-Stack-Project#elk-configuration).
 
 The configuration details of each machine may be found below.
 
