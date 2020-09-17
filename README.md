@@ -7,7 +7,7 @@ The files in this repository were used to configure the network depicted below.
 
 <img src="https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/ELK%20Diagram.jpg" />
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above, or select portions of the provided files may be used to install specific pieces of the deployment, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above, or select portions of the provided files may be used to install specific pieces of the deployment - such as [Filebeat] (https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml).
 
 
 This document contains the following details:
