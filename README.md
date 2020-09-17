@@ -100,16 +100,17 @@ We have installed the following Beats on these machines:
 The funtions of Filebeat and Metricbeat were covered at the beginning of this readme. Packbeat collects packets that pass through the network card, generating a trace of the network activity and forwarding this data to the ELK stack for analysis.
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbook, you will need to have an Ansible control node already configured. The Jump-Box-Provisioner serves this purpose.
 
 SSH into the control node and follow the steps below:
-- Copy the [filebeat-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml) to the proper directory specified inside said YAML file. This will involve making a directory called 'files' inside the Ansible directory in order to use this specific configuration.
-- Update the hosts file within the Ansible directory file to include the webservers (Red Team VMs) and the ELK server. Referenced in [this screenshot]()
-- Run the playbook, and navigate to to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- Update the hosts file within the Ansible directory (/etc/Ansible/) to include the webservers (Red Team VMs) and the ELK server. Referenced in [this screenshot](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/Ansible%20Hosts%20cap.png). While in this directory, run the command 'mkdir files' - this is crucial for the third step.
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- Copy the [filebeat-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml) to the proper directory specified inside said YAML file. 
+
+- Run the playbook, and navigate to to check that the installation worked as expected. As refrenced in the first step, this will involve making a directory called 'files' inside the Ansible directory in order to use this specific configuration.
+
+To verify success, you can run the command 'sudo docker container list -a' to verify that the ELK container was pulled and installed. You can then run 'sudo docker start elk' follow by 'sudo docker ps' to verify that the container launched and runs successfully.
+
+By then running curl http://52.252.58.97:5601, if the installation was successful and the container is running, the Kibana web application will load in a web browser.
+
