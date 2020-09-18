@@ -64,6 +64,8 @@ Only the Jump-Box-Provisioner machine can accept connections from the Internet. 
 Machines within the network can only be accessed via SSH port 22 through the Docker container loaded on the Ansible machine.
 - The ELK server can only be accessed via port 22 (SSH) from the Docker container, which has the key pair, and via HTTP on port 5601 - the latter being a security rule that needs to be established in the configuration process.
 
+- Additionally, placing the [daemon.json](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/daemon.json) file inside the /etc/docker directory on the Jump-Box-Provisioner will ensure that the container will be within the same subnet of the virtual network.
+
 A summary of the access policies in place can be found in the table below.
 
 | Name                 | Publicly Accessible | Allowed IP Address(s)               |
@@ -75,10 +77,17 @@ A summary of the access policies in place can be found in the table below.
 | ELK-Server           | No                  | Pub:52.252.58.97 - Priv:10.0.0.4    |
 
  - Note that while (as mentioned above) the ELK interface can be accessed via HTTP on port 5601, the host server itself remains entirely private.
+ 
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because the process eliminates potential human error and makes the process significantly more efficient - particularly while utilizing a bash script to establish multiple configurations with one command. There are, however, specific elements that will need to be modified to accurately configure according to the parameters of the topology (virtual networks and their respective IP addresses and/or subnets, as was modified in this particular case for the [filebeat-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/filebeat-config.yml)).
+
+The playbook [ansible-config.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/ansible-config.yml) is used to configure Ansible on the host machine.
+
+The playbook [Elk-Install.yml](https://github.com/SerratedGrin/Elk-Stack-Project/blob/master/Elk-Install.yml) run using the 'ansible-playbook <YAML file name>' command is the necessary action to establish ELK.
+  
+  - Note that within the playbook, there is a section establishing the memory for the container. Without expanding the memory, the container cannot run and thus the application will not launch.
 
 The playbook implements the following tasks:
 - Installs necessary files for ELK to run as intended.
