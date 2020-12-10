@@ -45,7 +45,7 @@ The virtual network and allocated security group the DVWA machines have been con
 
   - Note that the networks are peering - this allows both networks to seemlessly connect with each other, and simplifies configurations of the resource group containing the entire infrastructure.
 
-Filebeat collects data about the file system, ones that you can specify as may be necessary with a larger organization, and forwards them to Elasticsearch and/or Logstash for indexing.
+Filebeat collects data about file systems, or a system that you can specify as may be necessary with a larger organization, and forwards them to Elasticsearch and/or Logstash for indexing.
 
 Metricbeat (an accompanying service to Filebeat) collects server metrics - such as uptime, hardware utilization, peak response time, etc. This is particularly important tool for monitoring services such as Apache2 or MySQL. This data is also forwarded to Elasticsearch and/or Logstash.
 
